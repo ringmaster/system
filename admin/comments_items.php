@@ -1,4 +1,6 @@
 <?php if ( !defined( 'HABARI_PATH' ) ) { die('No direct access'); } ?>
+
+
 <?php if ( count($comments) != 0 ) :
 	foreach ( $comments as $comment ) : ?>
 
