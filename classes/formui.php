@@ -1007,7 +1007,18 @@ class FormControl
 	 */
 	public function checksum()
 	{
-		$storage = is_object( $this->storage ) ? gettype( $this->storage ) : $this->storage;
+		if ( is_array( $this->storage ) ) {
+			$storage = reset($this->storage);
+		}
+		else if ( is_object( $this->storage ) ) {
+			$storage = get_class($this->storage);
+		}
+		else if ( is_scalar( $this->storage ) ) {
+			$storage = $this->storage;
+		}
+		else {
+			$storage = 'unknown';
+		}
 		return md5( $this->name . $storage . $this->caption );
 	}
 
